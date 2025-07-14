@@ -55,6 +55,16 @@ def home():
         button_db=button_db,
         feedback_sent=feedback_sent
     )
+    
+@app.route('/view-feedback')
+def view_feedback():
+    auth = request.authorization
+    if not auth or auth.username != 'admin' or auth.password != 'yourpassword':
+        return ('Unauthorized', 401,
+                {'WWW-Authenticate': 'Basic realm="Login Required"'})
+    
+    feedbacks = Feedback.query.order_by(Feedback.created_at.desc()).all()
+    return render_template('view_feedback.html', feedbacks=feedbacks)
 
 if __name__ == '__main__':
     app.run(debug=True)
