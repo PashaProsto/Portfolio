@@ -1,3 +1,5 @@
 Flask
 Flask-SQLAlchemy
 gunicorn
+flask-admin
+flask-basicauth
