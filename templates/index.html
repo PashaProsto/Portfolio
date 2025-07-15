@@ -1,424 +1,223 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap");
-body::-webkit-scrollbar {
-  width: 0;
-}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <!-- Добавляем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Портфолио</title>
+    <style>
+      /* Стили для футера */
+      footer {
+        background-color: #2c3e50;
+        color: white;
+        padding: 30px 0;
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      .social-links {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+      }
+      
+      .social-links a {
+        color: white;
+        font-size: 28px;
+        transition: transform 0.3s, color 0.3s;
+        display: inline-block;
+      }
+      
+      .social-links a:hover {
+        transform: translateY(-5px);
+      }
+      
+      .email:hover { color: #ea4335; }
+      .github:hover { color: #6cc644; }
+      .telegram:hover { color: #0088cc; }
+      
+      .copyright {
+        margin-top: 25px;
+        font-size: 14px;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header__nav main-nav">
+        <ul class="main-nav__list main-list">
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#home">ГЛАВНАЯ</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#about">ОБО МНЕ</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#skills">МОИ СКИЛЛЫ</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <!-- Секция превью -->
+      <section class="main__home home" id="home">
+        <h1 class="home__title">Портфолио Зубашич Павла</h1>
+        <p class="home__subtitle">веб-разработчик, программист на пайтон</p>
+      </section>
+      <!-- Секция с рассказом о себе -->
+      <section class="main__about about" id="about">
+        <h2 class="about__title">ОБО МНЕ</h2>
+        <div class="about__info info-block">
+          <p class="info-block__text">
+            Здравствуйте! Меня зовут Зубашич Павел.
+            Я программист на пайтоне. Умею работать на различных библиотеках.
+            На этой странице вы можете ознакомится с моими проектами.
+          </p>
+          <img
+            class="info-block__img"
+            src="../static/img/profile.png"
+            alt="me"
+            width="250"
+            height="250"
+          />
+        </div>
+      </section>
+      <!-- Секция со скиллами -->
+      <section class="main__skills skills" id="skills">
+        <h2 class="skills__title">МОИ СКИЛЛЫ</h2>
+        <form action="/" method="POST">
+          <ul class="skills__list skills-list">
+            <li class="skills-list__skill skill">
+              <img
+                class="skill__img"
+                src="../static/img/python.png"
+                alt="python"
+                width="150"
+                height="150"
+              />
+              <span class="skill__info">Проект на пайтон</span>
+              <input class="skill__button" type="submit" name="button_python" value="ПОКАЗАТЬ ПРОЕКТ">
+            </li>
+            <li class="skills-list__skill skill">
+              <img
+                class="skill__img"
+                src="../static/img/TG.png"
+                alt="TG"
+                width="150"
+                height="150"
+              />
+              <span class="skill__info">Проект в телеграмме</span>
+              <input class="skill__button" type="submit" name="button_TG" value="ПОКАЗАТЬ ПРОЕКТ">
+            </li>
+            <li class="skills-list__skill skill">
+              <img
+                class="skill__img"
+                src="../static/img/html.png"
+                alt="html"
+                width="150"
+                height="150"
+              />
+              <span class="skill__info">
+                ㅤㅤㅤㅤㅤㅤㅤㅤㅤПроектㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+                сайт
+              </span>
+              <input class="skill__button" type="submit" name="button_html" value="ПОКАЗАТЬ ПРОЕКТ">
+            </li>
+            <li class="skills-list__skill skill">
+              <img
+                class="skill__img"
+                src="../static/img/db.webp"
+                alt="SQL"
+                width="150"
+                height="150"
+              />
+              <span class="skill__info">Проект с дата-базой</span>
+              <input class="skill__button" type="submit" name="button_db" value="ПОКАЗАТЬ ПРОЕКТ">
+            </li>
+          </ul>
+        </form>
+        {% if button_python%}
+          <div class="skills__project project" id="project">
+              <img class="project__img" src="../static/img/python-project.png" alt="project" width="500">
+              <a class="project__link" href="https://github.com/PashaProsto/Kodland_m1_u1.git">Открыть на GitHub</a>
+          </div>
+        {% endif %}
 
-html {
-  scroll-behavior: smooth;
-}
+        {% if button_TG%}
+          <div class="skills__project project" id="project">
+              <img class="project__img" src="../static/img/TG_project.jpg" alt="project" width="500">
+              <a class="project__link" href="https://github.com/PashaProsto/bot_lodland_m1u4.git">Открыть на GitHub</a>
+          </div>
+        {% endif %}
 
-body {
-  margin: 0;
-  padding: 0 3%;
-  font-family: "Mulish", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.2em;
-  background: linear-gradient(180deg, #EE6519 0%, #101130 100%);
-  color: #ffffff;
-}
+        {% if button_html%}
+          <div class="skills__project project" id="project">
+              <img class="project__img" src="../static/img/html-project.png" alt="project" width="500">
+              <a class="project__link" href="https://github.com/PashaProsto/siteKodl_2.git">Открыть на GitHub</a>
+          </div>
+        {% endif %}
 
-h1,
-h2,
-p {
-  margin: 0;
-}
+        {% if button_db%}
+          <div class="skills__project project" id="project">
+              <img class="project__img" src="../static/img/db-project.png" alt="project" width="500">
+              <a class="project__link" href="https://prostopasha.pythonanywhere.com/">Открыть проект</a>
+          </div>
+        {% endif %}
 
-h1,
-h2 {
-  font-weight: 700;
-  font-size: 42px;
-}
-
-img {
-  object-fit: contain;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: 0.2s;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
-  width: 100%;
-}
-
-.main-list {
-  display: flex;
-  gap: 150px;
-}
-
-.list-item__link {
-  position: relative;
-  font-size: 26px;
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.list-item__link::after {
-  position: absolute;
-  transition: 0.2s;
-  content: "";
-  border-radius: 10px;
-  width: 55%;
-  height: 3px;
-  bottom: -12px;
-  background: #ffe851;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.list-item__link:hover::after {
-  width: 100%;
-}
-
-.home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url(../img/developer.png);
-  background-size: cover;
-  padding: 10vh 10vw 80vh 10vw;
-  background-position: center bottom;
-  gap: 20px;
-}
-
-.home__title {
-  letter-spacing: 0.1em;
-  font-size: 70px;
-  text-align: center;
-  color: #ffa013;
-  line-height: 1;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.home__subtitle {
-  font-weight: 700;
-  font-size: 24px;
-  text-align: center;
-  line-height: 1;
-}
-
-.about {
-  margin-bottom: 200px;
-}
-
-.about__title {
-  font-size: 60px;
-  position: relative;
-  text-align: left;
-  color: #ff8f2e;
-  line-height: 1;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  margin-bottom: 60px;
-}
-
-.about__title::after {
-  position: absolute;
-  content: "";
-  border-radius: 10px;
-  width: 60%;
-  height: 1px;
-  bottom: -13px;
-  background: #fff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.info-block {
-  display: flex;
-  justify-content: space-between;
-}
-
-.info-block__text {
-  width: 40%;
-}
-
-.info-block__img {
-  align-self: center;
-}
-
-.skills {
-  margin-bottom: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
-}
-
-.skills__title {
-  font-size: 60px;
-  position: relative;
-  text-align: left;
-  color: #ff4040;
-  line-height: 1;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  margin-bottom: 20px;
-}
-
-.skills__title::after {
-  position: absolute;
-  content: "";
-  border-radius: 10px;
-  width: 60%;
-  height: 1px;
-  bottom: -13px;
-  background: #fff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-
-.skills-list {
-  display: flex;
-  justify-content: center;
-  gap: 100px;
-  flex-wrap: wrap;
-}
-
-.skill {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  text-align: center;
-}
-
-.skill__info {
-  width: 150px;
-}
-
-.skill__button {
-  font: inherit;
-  font-weight: 700;
-  color: #fff;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.skill__button:hover {
-  color: #f65a37;
-}
-
-.project {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-
-.project__img{
-  border-radius: 30px;
-}
-
-.project__link {
-  position: relative;
-  font-size: 20px;
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.project__link::after {
-  position: absolute;
-  transition: 0.2s;
-  content: "";
-  border-radius: 10px;
-  width: 55%;
-  height: 3px;
-  bottom: -12px;
-  background: #a82b0f;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.project__link:hover::after {
-  width: 100%;
-}
-
-.feedback {
-  margin-bottom: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
-}
-
-.feedback__title {
-  font-size: 60px;
-  position: relative;
-  text-align: left;
-  color: #cc8bf2;
-  line-height: 1;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  margin-bottom: 20px;
-}
-
-.feedback__title::after {
-  position: absolute;
-  content: "";
-  border-radius: 10px;
-  width: 60%;
-  height: 1px;
-  bottom: -13px;
-  background: #fff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.form label {
-  width: 100%;
-}
-
-.form__input {
-  width: 100%;
-  font: inherit;
-  background: #392657;
-  border: 2px solid #a178b9;
-  color: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.25));
-}
-
-.form__input::placeholder {
-  color: #fff;
-}
-
-.form__input:active,
-.form__input:focus,
-.form__input:focus-visible {
-  border: none;
-}
-
-
-.form__button {
-  font: inherit;
-  font-weight: 800;
-  color: #fff;
-  background: linear-gradient(111.97deg, #CC8BF2 35.63%, rgba(204, 139, 242, 0) 150.16%);
-  filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.25));
-  padding: 15px 30px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-}
-/* Общие стили для мобильных устройств*/
-@media (max-width: 768px) {
-  /* Навигация */
-  .main-nav__list {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .main-list__item {
-    margin: 5px 0;
-  }
-  
-  /* Обо мне */
-  .about__info {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .info-block__img {
-    margin: 0 auto;
-  }
-  
-  /* Скиллы */
-  .skills-list {
-    grid-template-columns: 1fr !important; /* Одна колонка */
-  }
-  
-  .skill {
-    margin-bottom: 20px;
-  }
-  
-  /* Форма обратной связи */
-  .feedback__form {
-    width: 100%;
-  }
-  
-  .form__input {
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  textarea.form__input {
-    width: 100%;
-  }
-  
-  /* Проекты */
-  .project__img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* Футер */
-  .social-links {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
-@media (max-width: 480px) {
-  body {
-    font-size: 16px;
-  }
-  
-  .home__title {
-    font-size: 1.8rem;
-  }
-  
-  .home__subtitle {
-    font-size: 1.2rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
-}
-.skill__button, .form__button {
-  min-height: 44px;
-  padding: 12px 20px;
-  font-size: 1rem;
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
-body {
-  overflow-x: hidden;
-}
-.skills-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
+      </section>
+      <!-- Секция с формой обратной связи -->
+      <section class="main__feedback feedback" id="feedback">
+        <h2 class="feedback__title">ФИДБЕК</h2>
+        <form action="" method="POST" class="feedback__form form">
+          <label for="email">
+            <input type="email" class="form__input" name="email" id="email" placeholder="Введите E-mail" required>
+          </label>
+          <label for="text">
+            <textarea name="text" class="form__input" id="text" cols="70" rows="10" required placeholder="Комментарий"></textarea>
+          </label>
+          <button class="form__button" type="submit">ОТПРАВИТЬ</button>
+        </form>
+      </section>
+    </main>
+    
+    <!-- Подвал для ссылок на соц-сети -->
+    <footer>
+      <div class="footer-content">
+        <h3>Свяжитесь со мной</h3>
+        <div class="social-links">
+          <!-- Email -->
+          <a href="mailto:pavelzubashich@gmail.com" class="email" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          
+          <!-- GitHub -->
+          <a href="https://github.com/PashaProsto" target="_blank" class="github" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          
+          <!-- Telegram -->
+          <a href="https://t.me/alembic1" target="_blank" class="telegram" title="Telegram">
+            <i class="fab fa-telegram-plane"></i>
+          </a>
+        </div>
+        <div class="copyright">
+          &copy; 2025 Портфолио Зубашич Павла. Все права защищены.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
